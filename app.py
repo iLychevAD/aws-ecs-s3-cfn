@@ -5,7 +5,7 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 UPLOAD_FOLDER = "uploads"
-BUCKET = os.environ("BUCKET")
+BUCKET = os.environ["BUCKET"]
 
 @app.route("/")
 def home():
