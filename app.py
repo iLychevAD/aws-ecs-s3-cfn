@@ -32,5 +32,6 @@ def upload():
         return redirect("/")
 
 if __name__ == '__main__':
+    os.makedirs(UPLOAD_FOLDER, exist_ok=True)
     print(BUCKET)
     app.run(host="0.0.0.0", debug=True)
