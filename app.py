@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, redirect, send_file
+from flask import Flask, render_template, request, redirect, send_file, jsonify
 from s3_functions import list_files, upload_file, show_image
 from werkzeug.utils import secure_filename
 
@@ -11,6 +11,12 @@ BUCKET = "lats-image-data"
 def home():
     contents = list_files(BUCKET)
     return render_template('index.html')
+
+@app.route("/health")
+def health_check():
+    resp = jsonify(success=True)
+    resp.status_code = 200
+    return resp
 
 @app.route("/pics")
 def list():
